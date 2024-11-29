@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Youtube 1</title>
+</head>
+<body>
+    
+    <header>
+        <h1>Aula 2</h1>
+
+        <nav>
+            <button id="btnAbrir">Abrir</button>
+            <button class="btnFechar">Fechar</button>
+        </nav>        
+    </header>
+
+    <div class="container">
+        <form>
+            <h2>Tela de Cadastro</h2>
+            <input type="text" placeholder="Nome completo">
+            <input type="text" placeholder="E-mail">
+            <input type="text" placeholder="Senha">
+            <button id="btnCadastrar">Cadastrar</button>
+        </form>
+    </div>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1{
+            margin-top: 10px;
+        }
+
+        header{
+            width: 100vw;
+            height: 100px;
+            color: white;
+            background-color: #1d1d1d;
+
+            gap: 10px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .container{
+            
+            height: 400px;
+            width: 100vw;
+            background-color: blueviolet;
+        }
+
+        button{
+            padding: 6px;
+            width: 100px;
+        }
+
+        form{
+            width: 50%;
+            margin: auto;
+
+            margin-top: 20px;
+            gap: 10px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+    </style>
+
+    <script>
+        
+        var btnAbrir = document.querySelector('#btnAbrir')
+        var btnFechar = document.querySelector('.btnFechar')
+        var ctx = document.querySelector('.container')
+        var btnCadastrar = document.querySelector('#btnCadastrar')
+
+        btnAbrir.onclick = function(event){
+            event.preventDefault()
+
+            ctx.style.display = 'flex'
+        }
+
+        btnFechar.onclick = function (event){
+            event.preventDefault()
+
+            ctx.style.display = "none"
+        }
+
+        btnCadastrar.onclick = function(event){
+            event.preventDefault()
+
+            alert('Cadastrado com sucesso!')
+
+            ctx.style.display = 'none'
+        }
+
+    </script>
+    
+</body>
+</html>
