@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praticando</title>
+</head>
+
+<body>
+    
+    <header>
+        <h1>Praticando</h1>        
+        <nav>
+            <button>Abrir</button>
+            <button>Fechar</button>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2>Tela de Cadastro</h2>
+        <form >
+            <input type="text" id="nome" placeholder="Nome completo">
+            <p id="pNome"> Resultado nome é  <span id="rsEmail" ></span> </p>
+            
+            <input type="text" id="email" placeholder="E-mail" >
+            <p id="pEmail"> Resultado se o email é  <span id="rsEmail" ></span> </p>
+            
+            <input type="password" id="senha" placeholder="Senha" value="1234">
+            <p  id="pSenha">Resultado se a senha é  <span id="rsSenha"></span> </p>
+            
+            <input type="password" id="confirmar" placeholder="confirmar">
+            <button id="btnCadastrar">Cadastrar</button>
+        </form>
+    </div>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            background-color: #1d1d1d;
+        }
+
+        header{
+            height: 100px;
+            width: 100vw;
+            color: #fff;
+
+            gap: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container{
+            height: 400px;
+            width: 100vw;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            background-color: blueviolet;
+        }
+
+        button{
+            width: 100px;
+            padding: 6px;
+        }
+
+        form{
+            width: 50%;
+            margin: auto;
+
+            gap: 10px;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        form input{
+            width: 80%;
+            padding: 10px;
+        }
+        #pEmail, #pNome, #pSenha{
+            display: none;
+            padding: 10px;
+            border-radius: 7px;
+            color: white;
+            background-color: green;
+            margin-left: -130px;
+        }
+    </style>
+
+    <script>
+        var btnCadastrar = document.querySelector('#btnCadastrar')
+        var ctx = document.querySelector('.container')
+        var nome    = document.querySelector('#nome')
+        var email   = document.querySelector('#email')
+        var senha   = document.querySelector('#senha')
+        var confirmar = document.querySelector('#confirmar')
+
+        function validar(){
+
+            if( nome.value == ""){
+                alert('preencher o campo nome')
+                return
+            }
+            
+            if( email.value == ""){
+                alert('preencher o campo email')
+                return
+            }
+
+            if( senha.value == ""){
+                alert('preencher o campo senha')
+                return
+            }
+            
+            if( senha.value !== confirmar.value){
+                alert('o compo senha e confirmar tem que ser igual')
+                return
+            }
+
+            else{
+                alert('Cadastrado com sucesso')
+                ctx.style.display = 'none'
+            }
+            
+        }
+
+        document.querySelector('h1').onmouseover = function(){
+            validar()
+        }
+
+        function comparacao(){
+            var email_padrao = 'admin@gmail.com'
+            var senha_padrao = '123'
+
+            var rsEmail = document.querySelector('#rsEmail')
+            var rsSenha = document.querySelector('#rsSenha')
+            
+           if( email.value == email_padrao ){
+                rsEmail.textContent = "Sucesso"
+            }else{
+                rsEmail.textContent = "Inválido"
+           }
+
+           if( senha.value == senha_padrao ){
+                rsSenha.textContent = "Sucesso"
+           }else{
+                rsSenha.textContent = "Inválido"
+           }
+
+        }
+
+
+        btnCadastrar.onclick = function(event){
+            event.preventDefault()
+
+           // comparacao()
+           // validar()
+        }
+
+        /** Exemplo 
+        email.addEventListener('change', function() {
+            var rsEmail = document.querySelector('#rsEmail')
+            var email_padrao = 'admin@gmail.com'
+            var pEmail = document.querySelector('#pEmail') 
+
+           if( email.value == email_padrao ){
+                pEmail.style.color = "white"
+                pEmail.style.backgroundColor = "green"
+                pEmail.style.padding = "10px"
+                pEmail.style.letterSpacing = "2px"
+                rsEmail.textContent = "Sucesso"
+            }else{
+                pEmail.style.color = "red"
+                pEmail.style.letterSpacing = "2px"
+                rsEmail.textContent = "Inválido"
+           }
+        })
+        */
+
+        nome.addEventListener('change', function() {
+            var rsEmail = document.querySelector('#rsEmail')
+            var email_padrao = 'admin@gmail.com'
+            var pEmail = document.querySelector('#pEmail') 
+
+           if( email.value == "" ){
+                pEmail.style.display = "block"
+                rsEmail.textContent = "sucesso"
+            }else{
+                pEmail.style.display = "block"
+                pEmail.style.backgroundColor = "red"
+                rsEmail.textContent = "inválido"
+           }
+        })
+
+        email.addEventListener('change', function() {
+            var rsEmail = document.querySelector('#rsEmail')
+            var email_padrao = 'admin@gmail.com'
+            var pEmail = document.querySelector('#pEmail') 
+
+           if( email.value == email_padrao ){
+                pEmail.style.display = "block"
+                rsEmail.textContent = "sucesso"
+            }else{
+                pEmail.style.display = "block"
+                pEmail.style.backgroundColor = "red"
+                rsEmail.textContent = "inválido"
+           }
+        })
+        senha.addEventListener('change', function() {
+            var rsSenha = document.querySelector('#rsSenha')
+            var senha_padrao = '123'
+            
+           if( senha.value == senha_padrao ){
+                rsSenha.style.color = "green"
+                rsSenha.textContent = "Sucesso"
+            }else{
+                rsSenha.textContent = "Inválido"
+           }
+        })
+    </script>
+</body>
+</html>
